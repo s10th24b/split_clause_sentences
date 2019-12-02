@@ -150,7 +150,7 @@ if __name__ == "__main__":
         current_file = load_xlsx(f)
         cl_cols = get_clause_cols(current_file)
         splt_sents(cl_cols)
-        current_file.save(outputdir+dir_splt+filename+'_output.xlsx')
+        current_file.save(outputdir+dir_splt+str(filename.split('.')[0])+'_output.xlsx')
         print("Processing",filename,"is completed!")
         print("\n============================================================\n")
     main_process_time = time.time() - main_process_time
