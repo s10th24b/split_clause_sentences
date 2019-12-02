@@ -1,7 +1,9 @@
 Dependencies
 
 pip3 install --user Cython
+
 pip3 install --user kss
+
 pip3 install --user openpyxl
 
 Tutorial
