@@ -92,11 +92,8 @@ def splt_sents(cells):
             s = cell.value
             #print("s:",s)
             s_list = kss.split_sentences(s)
+
             fix_splt_sents(s_list)
-
-
-
-
 
             sent_len = len(s_list)
             if sent_len == 0:
@@ -116,6 +113,12 @@ def splt_sents(cells):
                     if sent_len - seq > 0:
                         #print("insert_rows")
                         ws.insert_rows(current_row+1)
+                        ws['A'+str(current_row+1)] = ws['A'+str(current_row)].value
+                        ws['B'+str(current_row+1)] = ws['B'+str(current_row)].value
+                        ws['C'+str(current_row+1)] = ws['C'+str(current_row)].value
+                        ws['D'+str(current_row+1)] = ws['D'+str(current_row)].value
+                        ws['F'+str(current_row+1)] = ws['F'+str(current_row)].value
+                        ws['G'+str(current_row+1)] = ws['G'+str(current_row)].value
                     current_row+=1
             else:
                 print("current_row:",current_row)
