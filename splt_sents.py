@@ -85,11 +85,16 @@ def splt_sents(cells):
     process_time = time.time()
     global ws
     current_row = 2
-    for row in cells:
+    raw_row = 2
+    for raw_idx,row in enumerate(cells):
+        raw_row=raw_idx+2
         for cell in row:
-            if current_row % 100 == 0:
-                print("current_row:",current_row)
-            s = cell.value
+            # if current_row % 100 == 0:
+                # print("current_row:",current_row)
+            if raw_row % 100 == 0:
+                #print("raw_row:",raw_row)
+                print("raw_row:",raw_row,"/",end_of_row)
+            s = str(cell.value)
             #print("s:",s)
             s_list = kss.split_sentences(s)
 
@@ -97,15 +102,18 @@ def splt_sents(cells):
 
             sent_len = len(s_list)
             if sent_len == 0:
-                print("current_row:",current_row)
+                #print("current_row:",current_row)
+                print("raw_row:",raw_row)
                 print("sent_len is zero. Is it empty?")
                 current_row+=1
             elif sent_len == 1:
                 #print("current_row:",current_row)
+                #print("raw_row:",raw_row)
                 #print("sent_len is one. normal")
                 current_row+=1
             elif sent_len > 1: #sent_len is bigger than 1
-                print("Gotcha! sent_len: ",sent_len,"in",current_row)
+                # print("Gotcha! sent_len: ",sent_len,"in",current_row)
+                print("Gotcha! sent_len: ",sent_len,"in",raw_row)
                 print("Original Whole Clause:",s_list)
                 for idx,sent in enumerate(s_list):
                     seq = idx + 1
@@ -121,7 +129,8 @@ def splt_sents(cells):
                         ws['G'+str(current_row+1)] = ws['G'+str(current_row)].value
                     current_row+=1
             else:
-                print("current_row:",current_row)
+                #print("current_row:",current_row)
+                print("raw_row:",raw_row)
                 print("Abnormal")
     process_time = time.time() - process_time
     print("splt_sents Completed! in %.3f" %(process_time))
