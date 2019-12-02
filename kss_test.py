@@ -44,6 +44,7 @@ def load_xlsx(f):
     return current_xlsx
 
 def get_clause_cols(xlsx_file):
+    print("\n-----------------------------------------------------------=\n")
     print("Processing get_clause_cols . . .")
     process_time = time.time()
     global clause_col
@@ -59,6 +60,7 @@ def get_clause_cols(xlsx_file):
     clause_cols = ws[clause_col+str(2):clause_col+str(end_of_row)] #from start to end
     process_time = time.time() - process_time
     print("get_clause_cols Completed! in %.3f" %(process_time))
+    print("\n-----------------------------------------------------------=\n")
     return clause_cols
 
 def fix_splt_sent(s_list):
@@ -78,6 +80,7 @@ def fix_splt_sent(s_list):
 
 
 def splt_sents(cells):
+    print("\n-----------------------------------------------------------=\n")
     print("Processing splt_sents . . .")
     process_time = time.time()
     global ws
@@ -118,9 +121,12 @@ def splt_sents(cells):
                 print("current_row:",current_row)
                 print("Abnormal")
     process_time = time.time() - process_time
-    print("get_clause_cols Completed! in %.3f" %(process_time))
+    print("splt_sents Completed! in %.3f" %(process_time))
+    print("\n-----------------------------------------------------------=\n")
 
 if __name__ == "__main__":
+    print("\n-----------------------------------------------------------=\n")
+    print("Program Started . . .")
     main_process_time = time.time()
     dir_splt,currentdir,parentdir,datadir,outputdir,files = init_env()
     for idx,f in enumerate(files):
@@ -133,7 +139,8 @@ if __name__ == "__main__":
         cl_cols = get_clause_cols(current_file)
         splt_sents(cl_cols)
         current_file.save(outputdir+dir_splt+filename+'_output.xlsx')
-        print("processing",filename,"is completed!")
+        print("Processing",filename,"is completed!")
         print("\n============================================================\n")
     main_process_time = time.time() - main_process_time
     print("Program Ended! in %.3f" %(main_process_time))
+    print("\n-----------------------------------------------------------=\n")
