@@ -1,3 +1,4 @@
 data/*
+output_data/*
 *.xlsx
 .*.swp
