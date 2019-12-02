@@ -63,7 +63,7 @@ def get_clause_cols(xlsx_file):
     print("\n-----------------------------------------------------------=\n")
     return clause_cols
 
-def fix_splt_sent(s_list):
+def fix_splt_sents(s_list):
     for idx,s in enumerate(s_list):
         #print("s:",s)
         regex = re.compile("^\w+\.$")
@@ -92,7 +92,7 @@ def splt_sents(cells):
             s = cell.value
             #print("s:",s)
             s_list = kss.split_sentences(s)
-            fix_splt_sent(s_list)
+            fix_splt_sents(s_list)
 
 
 
