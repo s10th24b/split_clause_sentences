@@ -4,6 +4,11 @@ pip3 install --user Cython
 pip3 install --user kss
 pip3 install --user openpyxl
 
+Tutorial
+
+1. Put xlsx files in data directory
+2. Run splt_sents.py.
+
 
 가.
 나.
